@@ -1,4 +1,4 @@
-set search_path=jobfinder;
+SET search_path=jobfinder;
 SELECT post.post_name,
        area.area_name,
        employer.org_name
