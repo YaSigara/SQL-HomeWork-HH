@@ -1,4 +1,4 @@
-set search_path=jobfinder;
+SET search_path=jobfinder;
 SELECT
     employer.org_name AS company,
     percentile_cont(0.5) WITHIN GROUP ( ORDER BY vacancy_id ) AS median_count
