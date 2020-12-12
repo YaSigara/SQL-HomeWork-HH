@@ -1,4 +1,4 @@
-set search_path=jobfinder;
+SET search_path=jobfinder;
 SELECT
     area.area_name AS city,
     MIN(response.created_at - vacancy.created_at) AS min_innterval,
