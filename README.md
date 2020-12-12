@@ -1,1 +1,2 @@
-# SQL-HomeWork-HH
+# Шигорин С.П.
+Делал задание в DataGrip
