@@ -1,4 +1,4 @@
-set search_path=jobfinder;
+SET search_path=jobfinder;
 SELECT
     DISTINCT employer.org_name AS organisation,
     COUNT(response.vacancy_id) OVER (PARTITION BY vacancy.employer_id) AS response_count
