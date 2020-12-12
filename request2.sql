@@ -1,4 +1,4 @@
-set search_path=jobfinder;
+SET search_path=jobfinder;
 SELECT
     AVG(
 CASE WHEN(compensation_gross IS TRUE)
