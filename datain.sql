@@ -1,4 +1,4 @@
-set search_path=job_finder;
+SET search_path=job_finder;
 INSERT INTO
     area(area_name)
 VALUES ('Samara'),
