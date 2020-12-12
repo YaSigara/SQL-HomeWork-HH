@@ -1,5 +1,5 @@
 CREATE SCHEMA job_finder;
-set search_path=job_finder;
+SET search_path=job_finder;
 
 CREATE TABLE area(
     area_id serial primary key,
