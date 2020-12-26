@@ -3,12 +3,7 @@ SET search_path=job_finder;
 
 CREATE TABLE area(
     area_id serial primary key,
-    area_name text not null
-);
-
-CREATE TABLE post(
-    post_id serial primary key,
-    post_name text not null
+    name text not null
 );
 
 CREATE TABLE employee(
@@ -29,9 +24,9 @@ CREATE TABLE employer(
 
 CREATE TABLE vacancy(
     vacancy_id serial primary key,
-    post_id int not null references post(post_id),
+    post text not null,
     employer_id int not null references employer(employer_id),
-    aria_id int not null references area(area_id),
+    area_id int not null references area(area_id),
     compensation_from int,
     compensation_to int,
     compensation_gross bool not null,
