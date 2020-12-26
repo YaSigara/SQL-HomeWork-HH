@@ -1,15 +1,17 @@
-SET search_path=jobfinder;
+WITH response_counter AS (
+    SELECT
+        employer_id,
+        count(response_id)  AS count
+    FROM vacancy
+RIGHT JOIN response ON response.vacancy_id = vacancy .vacancy_id
+    GROUP BY vacancy .vacancy_id
+)
 SELECT
-    DISTINCT employer.org_name AS organisation,
-    COUNT(response.vacancy_id) OVER (PARTITION BY vacancy.employer_id) AS response_count
+    org_name,
+    coalesce(rc.count,0) AS count
 FROM employer
-INNER JOIN vacancy ON vacancy.employer_id=employer.employer_id
-INNER JOIN response ON vacancy.vacancy_id=response.vacancy_id
-GROUP BY
-    organisation,
-    response.vacancy_id,
-    vacancy.employer_id
+LEFT JOIN response_counter AS rc ON rc.employer_id = employer.employer_id
 ORDER BY
-    response_count DESC,
-    organisation ASC
+         count  DESC,
+         org_name ASC
 LIMIT 5;
