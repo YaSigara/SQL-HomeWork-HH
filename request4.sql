@@ -1,12 +1,12 @@
 SET search_path=jobfinder;
 WITH vacancy_counter AS (
     SELECT
-        vacancy.employer_id,
+        employer.employer_id,
         count(vacancy.vacancy_id) AS vacancy_count
     FROM employer
-    INNER JOIN vacancy ON vacancy.employer_id = employer.employer_id
+    LEFT JOIN vacancy ON vacancy.employer_id = employer.employer_id
     GROUP BY
-             vacancy.employer_id
+             employer.employer_id
     ORDER BY
              vacancy_count
 )
