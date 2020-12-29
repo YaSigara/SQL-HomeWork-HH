@@ -1,15 +1,10 @@
 WITH first_response AS (
     SELECT
         area.area_id AS city,
-        MIN(response.created_at - vacancy.created_at) OVER (PARTITION BY response.vacancy_id) AS min_response
+        MIN(response.created_at - vacancy.created_at) OVER (PARTITION BY response.vacancy_id, area.area_id) AS min_response
     FROM vacancy
     INNER JOIN response ON vacancy.vacancy_id = response.vacancy_id
     RIGHT JOIN area ON vacancy.area_id = area.area_id
-    GROUP BY
-             city,
-             response.vacancy_id,
-             vacancy.created_at,
-             response.created_at
              )
 SELECT
         city,
